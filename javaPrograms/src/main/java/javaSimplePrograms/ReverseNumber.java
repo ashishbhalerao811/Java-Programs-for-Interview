@@ -3,7 +3,7 @@ package javaSimplePrograms;
 public class ReverseNumber {
 
 	public static void main(String[] args) {
-		int n= 1234567;
+		int n= 12345;
 		
 		int rev=0;
 		
