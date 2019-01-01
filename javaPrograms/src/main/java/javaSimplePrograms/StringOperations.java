@@ -40,6 +40,8 @@ public class StringOperations {
 			
 		}
 		
+		
+		
 		System.out.println(("***************"));
 		
 		//4. startsWith() , endsWith()
@@ -48,6 +50,10 @@ public class StringOperations {
 		
 		//5. replace()
 		System.out.println(s1.replace("W", "Universe_"));
+		
+		String date="01-01-2019";
+		System.out.println(date.replace("-", "/"));
+		System.out.println(date.replace("-", ""));
 		
 		//6. replaceFirst()
 		System.out.println(s1.replaceFirst("W", "X"));
