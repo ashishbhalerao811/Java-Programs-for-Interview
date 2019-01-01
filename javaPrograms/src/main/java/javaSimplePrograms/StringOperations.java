@@ -58,10 +58,16 @@ public class StringOperations {
 		//7. replaceAll()
 		System.out.println(s1.replaceAll("W", "Universe_"));
 		
+		System.out.println(("***************"));
+		
 		//8. remove()=== there is no such method in a string or StringBuffer class. 
 		// we can use relace() to remove any char or string
 		System.out.println(s1.replace("World", ""));
 		System.out.println(s2.replace("J", ""));
+		
+		StringBuffer sb=new StringBuffer("Hello");  
+		sb.delete(1,3);  
+		System.out.println(sb);//prints Hlo
 		
 		//9. concat()
 		int y=10;
