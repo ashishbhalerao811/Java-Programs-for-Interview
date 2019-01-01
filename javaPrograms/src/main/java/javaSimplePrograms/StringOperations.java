@@ -93,6 +93,10 @@ public class StringOperations {
 		System.out.println(s1.isEmpty());
 		System.out.println("s4 is empty");
 		System.out.println(s4.isEmpty());
+		
+		//14. toUpperCase(), toLowerCase()
+		System.out.println(s1.toUpperCase());
+		System.out.println(s1.toLowerCase());
 	}
 
 }
