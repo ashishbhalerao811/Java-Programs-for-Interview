@@ -310,6 +310,9 @@ public class GenericFunctions {
 		
 		
 		
+		
+		
+		
 //		private Object getCurrentWindowhandle() {
 //			// TODO Auto-generated method stub
 //			return null;
