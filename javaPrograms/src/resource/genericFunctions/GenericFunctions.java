@@ -12,7 +12,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.common.base.Predicate;
 
@@ -304,28 +309,232 @@ public class GenericFunctions {
 			}
 			
 		};
-//		wait.until(function);
+		//wait.until(function);
 		
 		}	
 		
-		
-		
-		
-		
-		
-//		private Object getCurrentWindowhandle() {
-//			// TODO Auto-generated method stub
-//			return null;
-//		}
 
-		private void implicitWait(int i) {
-			driver.manage().timeouts().implicitlyWait(i, TimeUnit.SECONDS);
+		
+		/*
+		 * ImplicitWait
+		 * @param timeOut in Milliseconds
+		 * */
+		public void implicitWait(long timeInMilliSeconds) {
+			driver.manage().timeouts().implicitlyWait(timeInMilliSeconds, TimeUnit.SECONDS);
 			
 		}
 		
 		
 		
+		/*
+		 * ExplicitWait
+		 * @param timeOut in Milliseconds
+		 * @param webelement
+		 * @param condition
+		 * */
+		public void explicitWait(long timeInSeconds, WebElement webElement, ElementState condition) {
+			WebDriverWait wait=new WebDriverWait(driver, timeInSeconds);
+			
+			switch(condition) {
+			
+			case CLICKABLE:
+				wait.until(ExpectedConditions.elementToBeClickable(webElement));
+				break;
+				
+			case SELECTED:
+				wait.until(ExpectedConditions.elementToBeSelected(webElement));
+				break;	
+			
+			case VISIBLE:
+				wait.until(ExpectedConditions.visibilityOf(webElement));
+				break;	
+			
+			}
+			
+		}
 		
 		
+		/*
+		 * Enter Text in a TextBox
+		 * @param element
+		 * @param text
+		 * */
+		public void enterTextInTextBox(WebElement element, String text) {
+			element.clear();
+			element.click();
+			
+		}
 		
+		
+		/*
+		 * Links on HomePage
+		 * @param value
+		 * */
+		public boolean linksOnHomePage(String value) {
+			return this.driver.findElement(By.xpath("//div[contains(@id,'navbar')]//a[contains(text(),'"
+													+ value + "')]")).isDisplayed();
+		}
+		
+		
+		/*
+		 * ScrollIntoViewAndClick
+		 * @param locator
+		 * */
+		public void scrollIntoViewAndClick(By locator) {
+			WebElement webElement=driver.findElement(locator);
+			JavascriptExecutor executor=(JavascriptExecutor) this.driver;
+			executor.executeScript("arguments[0].scrollIntoView(true); arguments[0].click()", webElement);
+			
+		}
+		
+		
+		/*
+		 * ScrollIntoViewAndClickDefault
+		 * @param webElement
+		 * */
+		public void ScrollIntoViewAndClickDefault(WebElement webElement) {
+			
+			JavascriptExecutor executor=(JavascriptExecutor) this.driver;
+			executor.executeScript("arguments[0].scrollIntoView(block: 'center', inline: 'nearest')); arguments[0].click()", webElement);
+			
+		}
+		
+		/*
+		 * ScrollIntoViewAndClick
+		 * @param webElement
+		 * */
+		public void ScrollIntoViewAndClick(WebElement webElement) {
+			
+			JavascriptExecutor executor=(JavascriptExecutor) this.driver;
+			executor.executeScript("arguments[0].scrollIntoView(true); arguments[0].click()", webElement);
+			
+		}
+		
+		/*
+		 * Element Exists
+		 * @param locator
+		 * @return
+		 * */
+		public boolean elementExists(By locator) {
+			long timeOutInSeconds=10;
+			try {
+				WebDriverWait waitForPresence=new WebDriverWait(driver, timeOutInSeconds);
+				waitForPresence.until(ExpectedConditions.presenceOfElementLocated(locator));
+				return true;
+			} catch (Exception e) {
+				
+				return false;
+			}
+		}
+		
+		/*
+		 * Wait for Load
+		 * @param driver
+		 * */
+		public void waitForLoad(WebDriver driver) {
+			ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
+				//@Override
+				public Boolean apply(WebDriver driver) {
+					return ((JavascriptExecutor)driver).
+							executeScript("return document.readyState").equals("complete");
+				}
+			};
+			WebDriverWait wait=new WebDriverWait(driver, 30);
+			wait.until(pageLoadCondition);
+		}
+		
+		
+		/*
+		 * Perform Mouse Hover
+		 * @param mainTab
+		 * @param subTab
+		 * @param linkName
+		 * */
+		public void performMouseHover(WebElement mainTab,WebElement subTab,String linkName ) throws Exception {
+			
+			try {
+				Actions action=new Actions(this.driver);
+				action.moveToElement(mainTab).moveToElement(subTab).click(subTab).build().perform();
+				implicitWait(5000);
+			} catch (Error e) {
+				
+				throw e;
+			}catch (Exception e) {
+				
+				throw e;
+			}
+		}
+		
+		/*
+		 * ClickLink
+		 * @param WebElement
+		 * @param linkName
+		 * @param Exception
+		 * */
+		public void clickLink(WebElement webElement, String linkName) throws Exception {
+			try {
+				webElement.isDisplayed();
+				webElement.click();
+				
+			}catch (Error e) {
+				System.out.println(e);
+				throw e;
+			} 
+			catch (Exception e) {
+				System.out.println(e);
+				throw e;
+			}
+
+		}
+		
+		/*
+		 * Select checkBoxOrRadioButton
+		 * @param WebElement
+		 * @param checkBoxOrRadioButtonName
+		 * @param Exception
+		 * */
+		public void checkBoxOrRadioButton(WebElement webElement, String checkBoxOrRadioButtonName,
+											String value) throws Exception {
+			
+			try {
+				webElement.isDisplayed();
+				webElement.click();
+				
+			}catch (Error e) {
+				System.out.println(e);
+				throw e;
+			} 
+			catch (Exception e) {
+				System.out.println(e);
+				throw e;
+			}
+
+		}
+		
+		
+		/*
+		 * Select dropDownBox
+		 * @param WebElement
+		 * @param dropDownName
+		 * @param Exception
+		 * */
+		public void selectDropDownBox(WebElement webElement, String dropDownName,
+											String value) throws Exception {
+			
+			try {
+				webElement.isDisplayed();
+				Select dropDownSelection=new Select(webElement);
+				dropDownSelection.selectByVisibleText(value);
+				webElement.click();
+				
+			}catch (Error e) {
+				System.out.println(e);
+				throw e;
+			} 
+			catch (Exception e) {
+				System.out.println(e);
+				throw e;
+			}
+
+		}
 		}

@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import genericFunctions.GenericFunctions;
 import pagesPackage.ContactsPageClass;
 import pagesPackage.HomePageClass;
 import pagesPackage.LoginPageClass;
@@ -17,6 +18,7 @@ public class HomePageClassTest extends TestBaseClass{
 	LoginPageClass loginPageClass;
 	HomePageClass homePageClass;
 	ContactsPageClass contactsPageClass;
+	GenericFunctions genericFunctions=new GenericFunctions();
 	
 	public HomePageClassTest() {
 		
@@ -48,8 +50,9 @@ public class HomePageClassTest extends TestBaseClass{
 		
 		homePageClass.checkUserName();	
 		
+		genericFunctions=new GenericFunctions();
 		
-		
+				
 		System.out.println("User will click on view week");
 		homePageClass.clickOnViewWeekBtn();
 		
