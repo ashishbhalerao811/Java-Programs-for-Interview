@@ -39,4 +39,36 @@ or a JavaFX application class must extend javafx.application.Application*/
 //	}
 //	
 	
+/*5. Error: Main method not found in class javaSimplePrograms.JavaTest, please define the main method as:
+    static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application*/	
+	
+//	public static void main() {
+//		
+//		System.out.println("Hi");
+//	}
+	
+
+/*6. Error: Main method not found in class javaSimplePrograms.JavaTest, please define the main method as:
+    static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application*/	
+		
+//	public static void ashish(String []args) {
+//		
+//		
+//	}
+//	
+	
+	
+/*7. Illegal modifier for the method main; 
+ * only public, protected, private, abstract, static, final, synchronized, native & strictfp are permitted
+ * */	
+//	default static void main(String [] args) {
+//		System.out.println("Hi");
+//	}
+	
+	
+	
+	
+	
 }
