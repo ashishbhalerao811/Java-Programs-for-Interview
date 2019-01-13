@@ -42,6 +42,13 @@
 	    <artifactId>poi-ooxml</artifactId>
 	    <version>3.17.0.wso2v1</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+	<dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>1.2.16</version>
+	</dependency>
+
 	
 
   </dependencies>
